@@ -10,8 +10,15 @@ import logging
 import re
 from fastapi.middleware.cors import CORSMiddleware
 
-# Initialize FastAPI application
-app = FastAPI()
+# Disable GPU
+os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
+
+# Initialize FastAPI application with title, description, and version
+app = FastAPI(
+    title="Image Analysis API",
+    description="API for analyzing images using DeepFace. Provides age, gender, race, emotion detection, and face recognition.",
+    version="1.0.0"
+)
 
 # Define the origins that are allowed to make requests to this API
 origins = [
